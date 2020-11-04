@@ -1,0 +1,22 @@
+spring:
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    timeout: ${redis.timeout:5000}
+    lettuce:
+      pool:
+        max-active: ${redis.pool.maxActive:3000}
+        max-idle: ${redis.pool.maxIdle:10}
+        max-wait: ${redis.pool.maxWait:5000}
+        min-idle: ${redis.pool.minIdle:3}
+        time-between-eviction-runs: ${redis.pool.timeBetweenEviction:5000}
+
+architect:
+  support:
+    config:
+      lock:
+        registry-keys: ALLOCATE
+        expire-after: ${redis.lock.expire-after:2}
+        expire-after-time-unit: ${redis.lock.expire-after-time-unit:MINUTES}
